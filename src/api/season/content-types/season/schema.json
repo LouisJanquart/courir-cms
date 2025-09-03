@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "seasons",
+  "info": {
+    "singularName": "season",
+    "pluralName": "seasons",
+    "displayName": "Season"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "weeks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::week.week",
+      "mappedBy": "season"
+    }
+  }
+}

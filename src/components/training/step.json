@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_training_steps",
+  "info": {
+    "displayName": "Step"
+  },
+  "options": {},
+  "attributes": {
+    "kind": {
+      "type": "enumeration",
+      "enum": [
+        "warmup",
+        "run",
+        "walk",
+        "rest",
+        "cooldown"
+      ]
+    },
+    "label": {
+      "type": "string"
+    },
+    "seconds": {
+      "type": "integer"
+    },
+    "pace": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

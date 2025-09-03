@@ -373,6 +373,93 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiSeasonSeason extends Struct.CollectionTypeSchema {
+  collectionName: 'seasons';
+  info: {
+    displayName: 'Season';
+    pluralName: 'seasons';
+    singularName: 'season';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::season.season'
+    > &
+      Schema.Attribute.Private;
+    order: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    weeks: Schema.Attribute.Relation<'oneToMany', 'api::week.week'>;
+  };
+}
+
+export interface ApiSessionSession extends Struct.CollectionTypeSchema {
+  collectionName: 'sessions';
+  info: {
+    displayName: 'Session';
+    pluralName: 'sessions';
+    singularName: 'session';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::session.session'
+    > &
+      Schema.Attribute.Private;
+    number: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    steps: Schema.Attribute.Component<'training.step', true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    week: Schema.Attribute.Relation<'manyToOne', 'api::week.week'>;
+  };
+}
+
+export interface ApiWeekWeek extends Struct.CollectionTypeSchema {
+  collectionName: 'weeks';
+  info: {
+    displayName: 'Week';
+    pluralName: 'weeks';
+    singularName: 'week';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::week.week'> &
+      Schema.Attribute.Private;
+    number: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    season: Schema.Attribute.Relation<'manyToOne', 'api::season.season'>;
+    sessions: Schema.Attribute.Relation<'oneToMany', 'api::session.session'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -882,6 +969,9 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::season.season': ApiSeasonSeason;
+      'api::session.session': ApiSessionSession;
+      'api::week.week': ApiWeekWeek;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

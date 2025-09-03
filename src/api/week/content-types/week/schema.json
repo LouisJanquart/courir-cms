@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "weeks",
+  "info": {
+    "singularName": "week",
+    "pluralName": "weeks",
+    "displayName": "Week"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "number": {
+      "type": "integer"
+    },
+    "season": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::season.season",
+      "inversedBy": "weeks"
+    },
+    "sessions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::session.session",
+      "mappedBy": "week"
+    }
+  }
+}
