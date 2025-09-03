@@ -373,6 +373,41 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiRunnerProfileRunnerProfile
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'runner_profiles';
+  info: {
+    displayName: 'Runner Profile';
+    pluralName: 'runner-profiles';
+    singularName: 'runner-profile';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::runner-profile.runner-profile'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    seasonOrder: Schema.Attribute.Integer;
+    sessionNumber: Schema.Attribute.Integer;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    weekNumber: Schema.Attribute.Integer;
+  };
+}
+
 export interface ApiSeasonSeason extends Struct.CollectionTypeSchema {
   collectionName: 'seasons';
   info: {
@@ -915,7 +950,6 @@ export interface PluginUsersPermissionsUser
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
@@ -947,6 +981,10 @@ export interface PluginUsersPermissionsUser
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    runner_profile: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::runner-profile.runner-profile'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -969,6 +1007,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::runner-profile.runner-profile': ApiRunnerProfileRunnerProfile;
       'api::season.season': ApiSeasonSeason;
       'api::session.session': ApiSessionSession;
       'api::week.week': ApiWeekWeek;

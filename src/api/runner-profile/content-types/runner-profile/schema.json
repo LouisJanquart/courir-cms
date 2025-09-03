@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "runner_profiles",
+  "info": {
+    "singularName": "runner-profile",
+    "pluralName": "runner-profiles",
+    "displayName": "Runner Profile"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "seasonOrder": {
+      "type": "integer"
+    },
+    "weekNumber": {
+      "type": "integer"
+    },
+    "sessionNumber": {
+      "type": "integer"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "runner_profile"
+    }
+  }
+}
