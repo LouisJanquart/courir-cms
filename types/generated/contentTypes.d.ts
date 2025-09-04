@@ -373,6 +373,40 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiRunRun extends Struct.CollectionTypeSchema {
+  collectionName: 'runs';
+  info: {
+    displayName: 'Run';
+    pluralName: 'runs';
+    singularName: 'run';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    avgPaceSecPerKm: Schema.Attribute.Integer;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    distanceMeters: Schema.Attribute.Integer;
+    durationSeconds: Schema.Attribute.Integer;
+    finishedAt: Schema.Attribute.DateTime;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::run.run'> &
+      Schema.Attribute.Private;
+    ownerId: Schema.Attribute.Integer & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    seasonOrder: Schema.Attribute.Integer & Schema.Attribute.Required;
+    sessionNumber: Schema.Attribute.Integer & Schema.Attribute.Required;
+    startedAt: Schema.Attribute.DateTime;
+    track: Schema.Attribute.JSON;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    weekNumber: Schema.Attribute.Integer & Schema.Attribute.Required;
+  };
+}
+
 export interface ApiRunnerProfileRunnerProfile
   extends Struct.CollectionTypeSchema {
   collectionName: 'runner_profiles';
@@ -1003,6 +1037,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::run.run': ApiRunRun;
       'api::runner-profile.runner-profile': ApiRunnerProfileRunnerProfile;
       'api::season.season': ApiSeasonSeason;
       'api::session.session': ApiSessionSession;

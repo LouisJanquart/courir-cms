@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "runs",
+  "info": {
+    "singularName": "run",
+    "pluralName": "runs",
+    "displayName": "Run"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ownerId": {
+      "type": "integer",
+      "required": true
+    },
+    "seasonOrder": {
+      "type": "integer",
+      "required": true
+    },
+    "weekNumber": {
+      "type": "integer",
+      "required": true
+    },
+    "sessionNumber": {
+      "type": "integer",
+      "required": true
+    },
+    "startedAt": {
+      "type": "datetime"
+    },
+    "finishedAt": {
+      "type": "datetime"
+    },
+    "durationSeconds": {
+      "type": "integer"
+    },
+    "distanceMeters": {
+      "type": "integer"
+    },
+    "avgPaceSecPerKm": {
+      "type": "integer"
+    },
+    "track": {
+      "type": "json"
+    }
+  }
+}
