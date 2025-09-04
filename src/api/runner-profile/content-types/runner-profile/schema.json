@@ -25,6 +25,11 @@
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "runner_profile"
+    },
+    "ownerId": {
+      "type": "integer",
+      "required": true,
+      "unique": true
     }
   }
 }
