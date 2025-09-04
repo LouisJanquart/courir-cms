@@ -394,7 +394,6 @@ export interface ApiRunRun extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::run.run'> &
       Schema.Attribute.Private;
-    ownerId: Schema.Attribute.Integer & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     seasonOrder: Schema.Attribute.Integer & Schema.Attribute.Required;
     sessionNumber: Schema.Attribute.Integer & Schema.Attribute.Required;
@@ -403,6 +402,7 @@ export interface ApiRunRun extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    userId: Schema.Attribute.Integer & Schema.Attribute.Required;
     weekNumber: Schema.Attribute.Integer & Schema.Attribute.Required;
   };
 }
