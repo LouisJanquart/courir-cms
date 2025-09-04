@@ -11,6 +11,9 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "label": {
+      "type": "string"
+    },
     "number": {
       "type": "integer"
     },
