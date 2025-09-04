@@ -981,10 +981,6 @@ export interface PluginUsersPermissionsUser
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    runner_profile: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::runner-profile.runner-profile'
-    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
