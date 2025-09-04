@@ -394,19 +394,15 @@ export interface ApiRunnerProfileRunnerProfile
       'api::runner-profile.runner-profile'
     > &
       Schema.Attribute.Private;
-    ownerId: Schema.Attribute.Integer &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
     publishedAt: Schema.Attribute.DateTime;
     seasonOrder: Schema.Attribute.Integer;
     sessionNumber: Schema.Attribute.Integer;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    user: Schema.Attribute.Relation<
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
+    userId: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     weekNumber: Schema.Attribute.Integer;
   };
 }

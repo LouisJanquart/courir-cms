@@ -20,12 +20,7 @@
     "sessionNumber": {
       "type": "integer"
     },
-    "user": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::users-permissions.user"
-    },
-    "ownerId": {
+    "userId": {
       "type": "integer",
       "required": true,
       "unique": true
