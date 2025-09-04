@@ -11,6 +11,11 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "userId": {
+      "type": "integer",
+      "required": true,
+      "unique": true
+    },
     "seasonOrder": {
       "type": "integer"
     },
@@ -19,11 +24,6 @@
     },
     "sessionNumber": {
       "type": "integer"
-    },
-    "userId": {
-      "type": "integer",
-      "required": true,
-      "unique": true
     }
   }
 }
